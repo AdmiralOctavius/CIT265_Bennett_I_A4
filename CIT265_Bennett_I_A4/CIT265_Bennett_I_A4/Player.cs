@@ -6,14 +6,17 @@ using System.Threading.Tasks;
 
 namespace CIT265_Bennett_I_A4
 {
+    //Player class
+    //Note: there is a lot of commented code here that is console outs.
+    //In the interest of having a clean output log I've disabled these
     class Player
     {
         private string name;
-        private int wins = 0;
-        private int losses = 0;
+        private int wins;
+        private int losses;
         static private Random rand;
 
-        public Player()
+        public Player(string inName = "Violet", int wins = 0, int losses = 0)
         {
             //Thanks to Philip Taylor for reminding me how random works
 
@@ -62,7 +65,7 @@ namespace CIT265_Bennett_I_A4
         {
             if(opponent == this)
             {
-                Console.WriteLine("Stop hitting yourself!");
+                //Console.WriteLine("Stop hitting yourself!");
                 return;
             }
 
@@ -72,42 +75,42 @@ namespace CIT265_Bennett_I_A4
             Actions OneChoice = (Actions)p1C;
             Actions TwoChoice = (Actions)p2C;
 
-            Console.WriteLine(p1C.ToString() + " : " + OneChoice.ToString() + " " + p2C.ToString() + " : " + TwoChoice.ToString());
+            //Console.WriteLine(p1C.ToString() + " : " + OneChoice.ToString() + " " + p2C.ToString() + " : " + TwoChoice.ToString());
 
             if(OneChoice == Actions.rock && TwoChoice == Actions.lego)
             {
-                Console.WriteLine("Player 1 wins! Rock beats a lego!");
+                //Console.WriteLine("Player 1 wins! Rock beats a lego!");
                 Win = 1;
                 opponent.Loss = 1;
                 
             }
             else if(OneChoice == Actions.lego && TwoChoice == Actions.rock)
             {
-                Console.WriteLine("Player 2 wins! Rock beats a lego!");
+                //Console.WriteLine("Player 2 wins! Rock beats a lego!");
                 Loss = 1;
                 opponent.Win = 1;
             }
             else if(OneChoice == TwoChoice)
             {
-                Console.WriteLine("Draw!");
+                //Console.WriteLine("Draw!");
                 Match(opponent);
             }
             else if(OneChoice > TwoChoice)
             {
                 int result = OneChoice.CompareTo(TwoChoice);
-                Console.WriteLine(result + " This is the result of our game with 1 winning");
+                //Console.WriteLine(result + " This is the result of our game with 1 winning");
 
                 int difference = OneChoice - TwoChoice;
-                Console.WriteLine(difference + " The difference between two choices");
+                //Console.WriteLine(difference + " The difference between two choices");
 
                 if(difference > 1)
                 {
-                    Console.WriteLine("Draw! Play again!");
+                    //Console.WriteLine("Draw! Play again!");
                     Match(opponent);
                 }
                 else
                 {
-                    Console.WriteLine("Player1 Wins!");
+                    //Console.WriteLine("Player1 Wins!");
                     Win = 1;
                     opponent.Loss = 1;
                 }
@@ -115,28 +118,29 @@ namespace CIT265_Bennett_I_A4
             else
             {
                 int result = TwoChoice.CompareTo(OneChoice);
-                Console.WriteLine(result + " This is the result of our game with 2 winning");
+                //Console.WriteLine(result + " This is the result of our game with 2 winning");
 
                 int difference = TwoChoice - OneChoice;
-                Console.WriteLine(difference + " The difference between two choices");
+                //Console.WriteLine(difference + " The difference between two choices");
 
                 if (difference > 1)
                 {
-                    Console.WriteLine("Draw! Play again!");
+                    //Console.WriteLine("Draw! Play again!");
                     Match(opponent);
                 }
                 else
                 {
-                    Console.WriteLine("Player1 Wins!");
+                    //Console.WriteLine("Player1 Wins!");
                     Loss = 1;
                     opponent.Win = 1;
                 }
 
             }
 
-            Console.WriteLine("Results: \n P1 W: " + Win + "| L: " + Loss + "\n P2 W: " + opponent.Win + "| L: " + opponent.Loss);
+            //Console.WriteLine("Results: \n P1 W: " + Win + "| L: " + Loss + "\n P2 W: " + opponent.Win + "| L: " + opponent.Loss);
         }
 
+        //This is here so that the matching values can be tested more thoroughly 
         public void FixedMatch(Player opponent, int res1, int res2)
         {
             int p1C = res1;
@@ -145,41 +149,41 @@ namespace CIT265_Bennett_I_A4
             Actions OneChoice = (Actions)p1C;
             Actions TwoChoice = (Actions)p2C;
 
-            Console.WriteLine(p1C.ToString() + " : " + OneChoice.ToString() + " " + p2C.ToString() + " : " + TwoChoice.ToString());
+            //Console.WriteLine(p1C.ToString() + " : " + OneChoice.ToString() + " " + p2C.ToString() + " : " + TwoChoice.ToString());
 
             if (OneChoice == Actions.rock && TwoChoice == Actions.lego)
             {
-                Console.WriteLine("Player 1 wins! Rock beats a lego!");
+                //Console.WriteLine("Player 1 wins! Rock beats a lego!");
                 Win = 1;
                 opponent.Loss = 1;
 
             }
             else if (OneChoice == Actions.lego && TwoChoice == Actions.rock)
             {
-                Console.WriteLine("Player 2 wins! Rock beats a lego!");
+                //Console.WriteLine("Player 2 wins! Rock beats a lego!");
                 Loss = 1;
                 opponent.Win = 1;
             }
             else if (OneChoice == TwoChoice)
             {
-                Console.WriteLine("Draw!");
+                //Console.WriteLine("Draw!");
 
             }
             else if (OneChoice > TwoChoice)
             {
                 int result = OneChoice.CompareTo(TwoChoice);
-                Console.WriteLine(result + " This is the result of our game with 1 winning");
+                //Console.WriteLine(result + " This is the result of our game with 1 winning");
 
                 int difference = OneChoice - TwoChoice;
-                Console.WriteLine(difference + " The difference between two choices");
+                //Console.WriteLine(difference + " The difference between two choices");
 
                 if (difference > 1)
                 {
-                    Console.WriteLine("Draw! Play again!");
+                    //Console.WriteLine("Draw! Play again!");
                 }
                 else
                 {
-                    Console.WriteLine("Player1 Wins!");
+                    //Console.WriteLine("Player1 Wins!");
                     Win = 1;
                     opponent.Loss = 1;
                 }
@@ -187,32 +191,32 @@ namespace CIT265_Bennett_I_A4
             else
             {
                 int result = TwoChoice.CompareTo(OneChoice);
-                Console.WriteLine(result + " This is the result of our game with 2 winning");
+                //Console.WriteLine(result + " This is the result of our game with 2 winning");
 
                 int difference = TwoChoice - OneChoice;
-                Console.WriteLine(difference + " The difference between two choices");
+                //Console.WriteLine(difference + " The difference between two choices");
 
                 if (difference > 1)
                 {
-                    Console.WriteLine("Draw! Play again!");
+                    //Console.WriteLine("Draw! Play again!");
                 }
                 else
                 {
-                    Console.WriteLine("Player1 Wins!");
+                    //Console.WriteLine("Player1 Wins!");
                     Loss = 1;
                     opponent.Win = 1;
                 }
 
             }
 
-            Console.WriteLine("Results: \n P1 W: " + Win + "| L: " + Loss + "\n P2 W: " + opponent.Win + "| L: " + opponent.Loss);
+            //Console.WriteLine("Results: \n P1 W: " + Win + "| L: " + Loss + "\n P2 W: " + opponent.Win + "| L: " + opponent.Loss);
         }
 
         public int ChooseAction() {
             int result;
             
             result = rand.Next(0, 8);
-            Console.WriteLine(result.ToString());
+            //Console.WriteLine(result.ToString());
             
             return result;
         }
